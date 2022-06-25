@@ -14,10 +14,10 @@ function generatePassword() {
   var passLength = prompt("How many characters");
   if (passLength <= 7) {
     alert("Password must be atleast 8 characters");
-    return (generatePassword);
+     return generatePassword();
   } else if (passLength >= 129) {
     alert("please choose a password that has less than 128 characters");
-    return (generatePassword);
+    return generatePassword();
   }
   //see if user wants lowercase
   var passLower = confirm("do you want lowercase in the password?")
@@ -50,7 +50,6 @@ function generatePassword() {
     //break out if no char type
     if (passLower === false && passLower === false && passUpper === false && passSpecial === false) {
       alert("you need atleast one char type");
-      return(generatePassword);
     }
     //CONCAT THE CHAR TYPES TO THE PASSWORD
     if (passLower = true) {
@@ -83,7 +82,6 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
