@@ -1,11 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
 //global variables
 var charLOW = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var charUP = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var specChar = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","}","|","~"];
 var numChar = ["1","2","3","4","5","6","7","8","9","0"];
-
+var userChar = [];
 
 
 function generatePassword() {
@@ -51,13 +52,37 @@ function generatePassword() {
       alert("you need atleast one char type");
       return(generatePassword);
     }
+    //CONCAT THE CHAR TYPES TO THE PASSWORD
+    if (passLower = true) {
+      userChar = userChar.concat(charLOW);
+    }
+
+    if (passUpper = true) {
+      userChar = userChar.concat(charUP);
+    }
+
+    if (passSpecial = true) {
+      userChar = userChar.concat(specChar);
+    }
+
+    if (passNum = true) {
+      userChar = userChar.concat(numChar);
+    }
+
+    //pass generator
+    var donePass = "";
+    for (let i = 0; i <passLength; i++) {
+      var gen = Math.floor(Math.random() * userChar.length);
+      donePass = donePass + userChar[gen];
+    }
+    return donePass;
 }
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  //passwordText.value = password;
+  passwordText.value = password;
 
 }
 
